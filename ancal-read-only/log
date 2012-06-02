@@ -1,0 +1,108 @@
+5c5,7
+< import java.util.*;
+---
+> import java.util.ArrayList;
+> import java.util.Calendar;
+> 
+7,8c9,20
+< import android.content.*;
+< import android.graphics.*;
+---
+> import android.content.Context;
+> import android.graphics.Canvas;
+> import android.graphics.LinearGradient;
+> import android.graphics.Paint;
+> import android.graphics.Rect;
+> import android.graphics.RectF;
+> import android.graphics.Shader;
+> import android.graphics.Typeface;
+> import android.util.Log;
+> import android.view.KeyEvent;
+> import android.view.MotionEvent;
+> import android.view.View;
+11d22
+< import android.view.*;
+17c28
+< 	private final static int iStartHour = 3;
+---
+> 	private final static int iStartHour = 6;
+25,26c36,39
+< 		@SuppressWarnings("unused")
+< 		public int iDurationInMinutes = 0;
+---
+> 		public int iDurationInMinutes = 60;
+> 		public boolean allday = false;
+> 		public boolean alarm = false;
+> 		
+138c151
+< 	public void AddTimeItem(int iHour, int iMinute, int iDurationInMinutes)
+---
+> 	public void AddTimeItem(int iHour, int iMinute, int iDurationInMinutes, boolean allday, boolean alarm)
+143a157,158
+> 		item.allday = allday;
+> 		item.alarm = alarm;
+300c315
+< 		final int iTimeItemHeight = (int)(fHourItemHeight) >> 1;
+---
+> 		//final int iTimeItemHeight = (int)(fHourItemHeight) >> 1;
+304c319
+< 
+---
+> 			//Log.d("Affichage","Dur : "+item.iDurationInMinutes+" Start : "+item.iHour+item.iMinute);
+306,312d320
+< 			final float fItemPosY = iViewTop + (fHourItemHeight * (item.iHour - iStartHour));
+< 			final float fMinuteOffset = (fHourItemHeight / 60) * item.iMinute;				
+< 			int iTimeItemTop = (int)(fItemPosY + fMinuteOffset);
+< 
+< 			//correct item position if out of time range
+< 			if (iTimeItemTop + iTimeItemHeight > iViewBottom)
+< 				iTimeItemTop = iViewBottom - iTimeItemHeight;
+314,315d321
+< 			if (iTimeItemTop + iTimeItemHeight < iViewTop)
+< 				continue;
+316a323,350
+> 			final int iTimeItemHeight;
+> 			int iTimeItemTop;
+> 			
+> 			if (item.allday){
+> 				
+> 				iTimeItemHeight = (int)rectDayView.height();
+> 				iTimeItemTop = iViewTop;
+> 				
+> 			} else {
+> 				
+> 				final float fItemPosY;
+> 				final float fMinuteOffset;		
+> 			
+> 				fItemPosY = iViewTop + (fHourItemHeight * (item.iHour - iStartHour));
+> 				fMinuteOffset = (fHourItemHeight / 60) * item.iMinute;		
+> 				iTimeItemHeight = (int) ((double)fHourItemHeight * (item.iDurationInMinutes / 60.0));
+> 				//Log.d("Affichage","Dur : "+fHourItemHeight * (item.iDurationInMinutes / 60.0)+" Start : ");
+> 				iTimeItemTop = (int)(fItemPosY + fMinuteOffset);
+> 
+> 				//correct item position if out of time range
+> 				if (iTimeItemTop + iTimeItemHeight > iViewBottom)
+> 					iTimeItemTop = iViewBottom - iTimeItemHeight;
+> 
+> 				if (iTimeItemTop + iTimeItemHeight < iViewTop)
+> 					continue;
+> 			}
+> 			
+> 			//mpt.setColor(dayStyle.getColorTimeItem(true));
+318c352,360
+< 			mpt.setColor(dayStyle.getColorTimeItem(bFocused));
+---
+> 			mpt.setColor(dayStyle.iColorFrame);
+> 			
+> 		  //inner bkg
+> 			//mpt.setColor(dayStyle.getColorTimeItemBkg(bFocused));
+> 			if (item.alarm) {
+> 				mpt.setColor(dayStyle.getColorTimeItemBkg(bFocused));
+> 			} else {
+> 				mpt.setColor(dayStyle.iColorBkgHoliday);
+> 			}
+321,322c363
+< 			//inner bkg
+< 			mpt.setColor(dayStyle.getColorTimeItemBkg(bFocused));
+---
+> 			

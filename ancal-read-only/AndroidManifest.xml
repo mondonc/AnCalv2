@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="pl.magot.vetch.ancal"		
+		android:versionCode="32" android:versionName="1.6">
+		
+		<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+				
+    <application android:label="AnCal" android:icon="@drawable/icon" android:theme="@android:style/Theme.Black">
+				
+				<receiver android:name=".AnCalReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+				</receiver>
+
+        <service android:name=".reminder.AlarmService" android:process=":remote" />        
+
+        <activity android:name=".AnCal" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".activities.ActivityAppointment" android:label="@string/titleDefaultAppointment">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_NEW_APPOINTMENT" />
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_APPOINTMENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".activities.ActivityAppointmentRepeat" android:label="@string/titleDefaultRepeat" android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_APPOINTMENTREPEAT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".activities.ActivityTask" android:label="@string/titleDefaultTask">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_NEW_TASK" />
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_TASK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".activities.ActivityNote" android:label="@string/titleDefaultNote">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_NEW_NOTE" />
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_NOTE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".activities.ActivityOptions" android:label="@string/titleDefaultOptions">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_OPTIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".activities.ActivityAbout" android:label="@string/titleDefaultAbout">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_VIEW_ABOUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="pl.magot.vetch.widgets.DateWidget" android:label="Select date" 
+        	android:launchMode="singleTop" android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_SELECT_DATE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="pl.magot.vetch.widgets.TimeWidget" android:label="Select time"
+        	android:launchMode="singleTop" android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_SELECT_TIME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="pl.magot.vetch.widgets.KeyboardWidget" android:label="Edit text"
+					android:launchMode="singleTop" android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.AnCal.ACTION_MODE_EDIT_TEXT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>        
+        
+    </application>
+<uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="4"></uses-sdk>
+</manifest>

@@ -1,0 +1,30 @@
+
+Created by Piotr Zagawa
+
+
+Sources format: 2 tabs.
+
+
+-----
+
+- lock running in portrait mode
+  <activity android:screenOrientation="portrait" 
+
+- doesn't show "day ? of year".
+
+- doesn't honour system-wide date format.
+  In Settings, the date format is YYYY-MM-DD, but in AnCal, it's still DD-MM-YYYY.
+	
+- no compress view in day view. (e.g. Remove idle hours to save screen space.)
+
+- cannot configure default time range shown in day view, always 6am to 10pm.
+
+- iCal syncing
+
+- location field for an appointment
+
+- searching with
+  android.app.SearchManager
+					
+- autoscroll DAY View to current hour
+

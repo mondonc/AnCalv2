@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/21/trunk/res/layout
+END
+options.xml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/8/trunk/res/layout/options.xml
+END
+alarmdialog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/8/trunk/res/layout/alarmdialog.xml
+END
+appointment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/8/trunk/res/layout/appointment.xml
+END
+appointmentrepeat.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/8/trunk/res/layout/appointmentrepeat.xml
+END
+agenda.xml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/21/trunk/res/layout/agenda.xml
+END
+task.xml
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/8/trunk/res/layout/task.xml
+END
+note.xml
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/8/trunk/res/layout/note.xml
+END
+about.xml
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/21/trunk/res/layout/about.xml
+END
