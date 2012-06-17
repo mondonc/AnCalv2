@@ -97,7 +97,7 @@ public class AnCal extends CommonActivity
   {
   	super.onCreate(icicle);
 	  base = this;
-		utils.ShowGetPassword(this);
+	  utils.ShowGetPassword(this);
 	  
   }
   
@@ -105,13 +105,14 @@ public class AnCal extends CommonActivity
   	setContentView(R.layout.agenda);
 	  InitViews();
 		InitStateOnce();
-		StartReminderService(); 
+		//StartReminderService(); 
   	
   }
 
   @Override
   public void onStart()
   {
+
   	super.onStart();
   	
   }

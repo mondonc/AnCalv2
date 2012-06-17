@@ -25,6 +25,8 @@ public class Utils
 {
 	private Context ctx = null;
 	
+	public static boolean initialized = false;
+	
 	public static int ANIM_ALPHA_DURATION = 100;
 	public static int ANIM_TRANSLATE_DURATION = 30;	
 	
@@ -136,13 +138,19 @@ public class Utils
 	
 	public void ShowGetPassword(Activity act)
 	{
+		final AnCal activity = (AnCal) act;
+		if (initialized) {
+			activity.init();
+			return ;
+		} 
+		initialized = true;
 		String sTitle = "Password";
 		int iconId = 0;
 		//sTitle = GetResStr(R.string.msgTypeInfo);
 		iconId = R.drawable.msgicon_info;
 		AlertDialog.Builder dlg = new AlertDialog.Builder(ctx);		
 		final EditText input = new EditText(ctx);
-		final AnCal activity = (AnCal) act;
+		
 		input.setSingleLine(true);
 		input.setTransformationMethod(new PasswordTransformationMethod());
 		input.setId(123456789);   
